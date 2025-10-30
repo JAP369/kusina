@@ -212,7 +212,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-orange-50 p-3 rounded-lg"><FiMapPin className="text-2xl text-[#FF6B00]" /></div>
-                  <div><h3 className="font-semibold text-gray-800 mb-1">Location</h3><p className="text-gray-600">123 Filipino Street<br />Central, Hong Kong</p></div>
+                  <div><h3 className="font-semibold text-gray-800 mb-1">Location</h3><p className="text-gray-600">1 Morrison Hill Road<br />Wan Chai, Hong Kong</p></div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="bg-orange-50 p-3 rounded-lg"><FiPhone className="text-2xl text-[#FF6B00]" /></div>
