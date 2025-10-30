@@ -2,13 +2,10 @@
 
 import Link from 'next/link';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { motion, Transition, Variant } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
-  // -------------------------------------------------
-  //  Type‑safe animation variants
-  // -------------------------------------------------
-  const iconVariants: Record<'rest' | 'hover', Variant> = {
+  const iconVariants = {
     rest: {
       scale: 1,
       rotate: 0,
@@ -22,67 +19,43 @@ export default function Footer() {
         type: 'spring',
         stiffness: 400,
         damping: 12,
-      } satisfies Transition,   // <-- fixes the TS error
+      } satisfies import('framer-motion').Transition,
     },
-  };
+  } satisfies import('framer-motion').Variants;
 
   return (
     <footer className="bg-[#eceadd] text-black py-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-
-          {/* ---------- Social Media ---------- */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <h3 className="text-lg font-semibold">Follow us!</h3>
-
             <div className="flex gap-5">
-              {/* WhatsApp */}
               <motion.div
                 variants={iconVariants}
                 initial="rest"
                 whileHover="hover"
                 className="text-[#25D366] hover:text-[#1DA851]"
               >
-                <Link
-                  href="https://wa.me/+85295342948"
-                  target="_blank"
-                  aria-label="WhatsApp"
-                >
+                <Link href="https://wa.me/+85295342948" target="_blank" aria-label="WhatsApp">
                   <FaWhatsapp size={28} />
                 </Link>
               </motion.div>
-
-              {/* Instagram */}
               <motion.div
                 variants={iconVariants}
                 initial="rest"
                 whileHover="hover"
                 className="text-[#E4405F] hover:text-[#C13584]"
               >
-                <Link
-                  href="https://www.instagram.com/ikkin0610"
-                  target="_blank"
-                  aria-label="Instagram"
-                >
+                <Link href="https://www.instagram.com/ikkin0610" target="_blank" aria-label="Instagram">
                   <FaInstagram size={28} />
                 </Link>
               </motion.div>
             </div>
           </div>
-
-          {/* ---------- Legal Links ---------- */}
           <div className="flex items-center gap-4 text-sm">
-            <Link href="/terms" className="hover:underline">
-              Terms & Conditions
-            </Link>
-            <Link href="/privacy" className="hover:underline">
-              Privacy Policy
-            </Link>
-            <Link
-              href="https://nextjs.org"
-              target="_blank"
-              className="hover:underline"
-            >
+            <Link href="/terms" className="hover:underline">Terms & Conditions</Link>
+            <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
+            <Link href="https://nextjs.org" target="_blank" className="hover:underline">
               Powered by Next.JS
             </Link>
           </div>
