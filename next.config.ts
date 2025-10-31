@@ -1,14 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Bypass TypeScript errors during build
+  // Bypass **TypeScript** errors on Vercel
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Bypass ESLint during build
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+
+  // ESLint is **removed** — Next.js 16 no longer supports it here
 };
 
 export default nextConfig;
