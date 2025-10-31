@@ -48,23 +48,27 @@ export default function SideBar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [activeSection]);
 
-  // ────── ANIMATIONS ──────
+  // ────── ANIMATIONS (type‑safe) ──────
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: { staggerChildren: 0.08, delayChildren: 0.3 },
     },
-  };
+  } satisfies import('framer-motion').Variants;
 
   const item = {
     hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { type: 'spring', stiffness: 120, damping: 14 },
+      transition: {
+        type: 'spring',
+        stiffness: 120,
+        damping: 14,
+      } satisfies import('framer-motion').Transition,
     },
-  };
+  } satisfies import('framer-motion').Variants;
 
   return (
     <motion.aside
