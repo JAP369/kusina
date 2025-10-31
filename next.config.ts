@@ -1,13 +1,12 @@
-// next.config.ts
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // Bypass TypeScript errors during build
   typescript: {
-    // Bypass TypeScript errors during build
     ignoreBuildErrors: true,
   },
+  // Bypass ESLint during build
   eslint: {
-    // Bypass ESLint errors during build
     ignoreDuringBuilds: true,
   },
 };
