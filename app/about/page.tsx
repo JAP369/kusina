@@ -30,8 +30,8 @@ export default function AboutPage() {
       phone: "+852 9534 2948",
       openingHours: {
         "Mon - Fri": "12:00 PM - 02:30 PM",
-        "Sun": "01:00 PM - 05:30 PM",
-        "Sat": "01:00 PM - 04:00 PM"
+        "Sat": "01:00 PM - 05:30 PM",
+        "Sun": "Closed"
       }
     },
     // {
