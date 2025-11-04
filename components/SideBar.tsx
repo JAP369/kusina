@@ -8,7 +8,9 @@ export default function SideBar() {
 
   const categories = [
     { id: 'pika-pika', name: 'Pika-Pika (Snacks & Finger food)' },
-    { id: 'karne', name: 'Karne (Filipino Meat Dishes)' },
+    { id: 'manok', name: 'Manok (Filipino Chicken Dishes)' },
+    { id: 'baboy', name: 'Baboy (Filipino Pork Dishes)' },
+    { id: 'baka', name: 'Baka (Filipino Beef Dishes)' },
     { id: 'stew-meals', name: 'Filipino Stew Meals (All served with plain rice)' },
     { id: 'breakfast', name: 'All-day Filipino Breakfast meals (Silogs)' },
     { id: 'pancit', name: 'Pancit (Filipino Noodles) & Pasta' },
