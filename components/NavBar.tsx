@@ -4,15 +4,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiShoppingBag, FiMenu, FiX } from 'react-icons/fi';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CartModal from './CartModal';
+import AddToCartNotification from './AddToCartNotification';
+import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { state, lastAddedItem, clearLastAddedItem } = useCart();
+  const cartAnchorRef = useRef<HTMLButtonElement>(null);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
+    if (lastAddedItem) {
+      clearLastAddedItem();
+    }
   };
 
   const toggleMobileMenu = () => {
@@ -22,6 +29,21 @@ export default function Navbar() {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  const handleViewCart = () => {
+    clearLastAddedItem();
+    setIsCartOpen(true);
+  };
+
+  // Auto-hide notification after a short delay when a new item is added
+  useEffect(() => {
+    if (!lastAddedItem) return;
+    const t = setTimeout(() => {
+      clearLastAddedItem();
+    }, 3500);
+
+    return () => clearTimeout(t);
+  }, [lastAddedItem, clearLastAddedItem]);
 
   return (
     <>
@@ -51,8 +73,16 @@ export default function Navbar() {
           <button 
             onClick={toggleCart}
             className="relative hover:text-[#FF6B00] transition-colors"
+            ref={cartAnchorRef}
           >
-            <FiShoppingBag className="text-2xl text-gray-700 hover:text-[#FF6B00]" />
+            <motion.div key={state.totalItems} initial={{ scale: 1 }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.3 }} className="relative">
+              <FiShoppingBag className="text-2xl text-gray-700 hover:text-[#FF6B00]" />
+              {state.totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#FF6B00] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {state.totalItems}
+                </span>
+              )}
+            </motion.div>
           </button>
           {/* Mobile Menu Button */}
           <button 
@@ -111,6 +141,19 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Add-to-cart popover under/near the cart icon */}
+      <AddToCartNotification
+        isVisible={!!lastAddedItem}
+        items={state.items}
+        subtotal={state.totalPrice}
+        freeShippingThreshold={500}
+        anchorRef={cartAnchorRef}
+        onClose={() => {
+          clearLastAddedItem();
+        }}
+        onViewCart={handleViewCart}
+      />
 
       <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>

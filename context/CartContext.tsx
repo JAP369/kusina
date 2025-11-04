@@ -14,13 +14,16 @@ interface CartState {
   items: CartItem[];
   totalItems: number;
   totalPrice: number;
+  // The most recently added item (for popover/notification)
+  lastAddedItem: Omit<CartItem, 'quantity'> | null;
 }
 
 type CartAction =
   | { type: 'ADD_ITEM'; payload: Omit<CartItem, 'quantity'> }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
-  | { type: 'CLEAR_CART' };
+  | { type: 'CLEAR_CART' }
+  | { type: 'CLEAR_LAST_ADDED' };
 
 const calculateTotalPrice = (items: CartItem[]): number => {
   return items.reduce((total, item) => {
@@ -42,7 +45,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
           ...state,
           items: updatedItems,
           totalItems: state.totalItems + 1,
-          totalPrice: calculateTotalPrice(updatedItems)
+          totalPrice: calculateTotalPrice(updatedItems),
+          lastAddedItem: action.payload
         };
       }
 
@@ -53,7 +57,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         ...state,
         items: updatedItems,
         totalItems: state.totalItems + 1,
-        totalPrice: calculateTotalPrice(updatedItems)
+        totalPrice: calculateTotalPrice(updatedItems),
+        lastAddedItem: action.payload
       };
     }
 
@@ -86,7 +91,14 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return {
         items: [],
         totalItems: 0,
-        totalPrice: 0
+        totalPrice: 0,
+        lastAddedItem: null
+      };
+
+    case 'CLEAR_LAST_ADDED':
+      return {
+        ...state,
+        lastAddedItem: null
       };
 
     default:
@@ -97,7 +109,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 const initialState: CartState = {
   items: [],
   totalItems: 0,
-  totalPrice: 0
+  totalPrice: 0,
+  lastAddedItem: null
 };
 
 const CartContext = createContext<{
@@ -106,6 +119,8 @@ const CartContext = createContext<{
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  lastAddedItem: CartState['lastAddedItem'];
+  clearLastAddedItem: () => void;
 } | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -127,8 +142,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'CLEAR_CART' });
   };
 
+  const clearLastAddedItem = () => {
+    dispatch({ type: 'CLEAR_LAST_ADDED' });
+  };
+
   return (
-    <CartContext.Provider value={{ state, addItem, removeItem, updateQuantity, clearCart }}>
+    <CartContext.Provider value={{ state, addItem, removeItem, updateQuantity, clearCart, lastAddedItem: state.lastAddedItem, clearLastAddedItem }}>
       {children}
     </CartContext.Provider>
   );
