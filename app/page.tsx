@@ -20,14 +20,14 @@ export default function HomePage() {
     },
     {
       title: 'BISTEK TAGALOG',
-      image: '/bistek.jpg',
+      image: '/bistek-tagalog.jpg',
       description: 'Thinly sliced ribeye steak with caramelized onions in soy-calamansi sauce.',
       link: '/menu#karne'
     },
     {
-      title: 'PANCIT MALABON',
-      image: '/pancit-malabon.jpg',
-      description: 'Thick rice noodles with homemade seafood sauce.',
+      title: 'PANCIT PALABOK',
+      image: '/palabok.jpg',
+      description: 'Filipino noodle dish with a rich, savory, and orange-hued garlic-shrimp sauce poured over thin rice noodles',
       link: '/menu#pancit'
     }
   ];
@@ -52,10 +52,10 @@ export default function HomePage() {
       link: '/menu#breakfast'
     },
     {
-      title: 'HOTSILOG',
-      image: '/hotsilo.jpg',
+      title: 'CORNSILOG',
+      image: '/cornsilog.jpg',
       description: '...',
-      link: '/menu#hotsilog'
+      link: '/menu#cornsilog'
     }
   ];
 
@@ -64,60 +64,60 @@ export default function HomePage() {
       title: 'PORK ADOBO',
       image: '/pork-adobo.jpg',
       description: 'A Visayan-inspired, slow-cooked pork adobo.',
-      link: '/menu#stew-meals'
+      link: '/menu#baboy'
     },
     {
-      title: 'VEGAN KARE-KARE',
-      image: '/vegan-kare.jpg',
-      description: 'Freshly cooked in homemade peanut sauce.',
-      link: '/menu#stew-meals'
+      title: 'KARE-KARE',
+      image: '/kare-kare.jpg',
+      description: 'Oxtail stew in peanut sauce.',
+      link: '/menu#baka'
     },
     {
-      title: 'PORK BICOL EXPRESS',
-      image: '/pork-bicol.jpg',
-      description: 'A mildly spicy meat dish with coconut cream.',
-      link: '/menu#stew-meals'
+      title: 'CHICKEN BICOL EXPRESS',
+      image: '/chicken-bicol-express.jpg',
+      description: 'Spicy chicken coconut stew',
+      link: '/menu#manok'
     },
     {
       title: 'PORK MENUDO',
       image: '/pork-menudo.jpg',
       description: 'Pork stew made with fresh vegetables.',
-      link: '/menu#stew-meals'
+      link: '/menu#baboy'
     }
   ];
 
   const sweetTreats = [
     {
-      title: 'MANGO FLOAT',
-      image: '/mango-float.jpg',
-      description: 'Filipino cake dessert with graham crackers, whipped cream and mangoes.',
+      title: 'LECHE FLAN',
+      image: '/leche-flan.jpg',
+      description: 'A creamy, custard dessert with a layer of caramelized sugar.',
       link: '/menu#desserts'
     },
     {
-      title: 'BUKO PANDAN',
-      image: '/buko-pandan.jpg',
-      description: 'Pandan flavoured gelatine and young coconut in cream.',
+      title: 'UBE MAJA BLANCA',
+      image: '/ube-maja.jpg',
+      description: 'A vibrant, creamy, and velvety delicacy known for its distinct purple color and sweet, nutty, vanilla-like flavor profile.',
       link: '/menu#desserts'
     },
     {
-      title: 'BUTTERED PUTO',
-      image: '/buttered-puto.jpg',
-      description: 'Buttery sweet Filipino steamed rice cake.',
+      title: 'PUTO CHEESE',
+      image: '/puto-cheese.jpg',
+      description: 'Soft, fluffy, steamed cakes topped with a slice of melted cheese.',
       link: '/menu#desserts'
     },
     {
-      title: 'FRESHLY BAKED BIKO',
-      image: '/baked-biko.jpg',
-      description: 'Filipino sweet rice cake.',
+      title: 'PUTO BUMBONG',
+      image: '/puto-bumbong.jpg',
+      description: 'a Filipino purple rice cake steamed in bamboo tubes.',
       link: '/menu#desserts'
     }
   ];
 
   const categories = [
     { name: 'Pika-Pika', image: '/lumpia.jpg', link: '/menu#pika-pika' },
-    { name: 'Karne', image: '/bistek.jpg', link: '/menu#karne' },
-    { name: 'Empanadas', image: '/empanada.jpg', link: '/menu#empanadas' },
-    { name: 'Stew Meals', image: '/pork-adobo.jpg', link: '/menu#stew-meals' },
+    { name: 'Chicken', image: '/chicken-bicol-express.jpg', link: '/menu#manok' },
+    { name: 'Pork', image: '/pork-adobo.jpg', link: '/menu#baboy' },
+    { name: 'Beef', image: '/bistek-tagalog.jpg', link: '/menu#baka' },
     { name: 'Breakfast', image: '/tapsilog.jpg', link: '/menu#breakfast' },
     { name: 'Pancit & Pasta', image: '/pancit-malabon.jpg', link: '/menu#pancit' },
     { name: 'Fried Rice', image: '/sinangag.jpg', link: '/menu#fried-rice' },

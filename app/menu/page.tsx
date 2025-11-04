@@ -35,7 +35,7 @@ export default function MenuPage() {
 
   const manokFoods = [
     { title: 'Chicken Adobo', desc: 'Braised chicken, marinated and stewed with vinegar, soy sauce, garlic, bay leaves, black peppercorns', price: 'HK$68', image: '/chicken-adobo.jpg' },
-        { title: 'Manok na Bicol Express', desc: 'Spicy chicken coconut stew', price: 'HK$68', image: '/chicken-bicol-express.jpg' },
+    { title: 'Chicken Bicol Express', desc: 'Spicy chicken coconut stew', price: 'HK$68', image: '/chicken-bicol-express.jpg' },
     
   ];
 
@@ -45,21 +45,14 @@ export default function MenuPage() {
     { title: 'Pork in Bicol Express', desc: 'Spicy coconut pork', price: 'HK$68', image: '/pork-bicol-express.jpg' },
     { title: 'Pork Adobo', desc: 'Classic Filipino braised pork', price: 'HK$68', image: '/pork-adobo.jpg' },
     { title: 'Dinuguan', desc: 'Pork blood stew', price: 'HK$68', image: '/dinuguan.jpg' },
-        { title: 'Pork Sisig', desc: 'Sizzling pork face and ears', price: 'HK$78', image: '/pork-sisig.jpg' },
+    { title: 'Pork Sisig', desc: 'Sizzling pork face and ears', price: 'HK$78', image: '/pork-sisig.jpg' },
   ];
 
     const bakaFoods = [
-       { title: 'Kare-Kare', desc: 'Oxtail stew in peanut sauce', price: 'HK$68', image: '/kare-kare.jpg' },
-{ title: 'Bistek Tagalog', desc: 'Filipino beef steak', price: 'HK$68', image: '/bistek-tagalog.jpg' },
+  { title: 'Kare-Kare', desc: 'Oxtail stew in peanut sauce', price: 'HK$68', image: '/kare-kare.jpg' },
+  { title: 'Bistek Tagalog', desc: 'Filipino beef steak', price: 'HK$68', image: '/bistek-tagalog.jpg' },
   ];
 
-
-  const stewMeals = [
-
-
-
-
-  ];
 
   const breakfastFoods = [
     { title: 'Tapsilog', desc: 'Beef tapa, egg & rice', price: 'HK$68', image: '/tapsilog.jpg' },
